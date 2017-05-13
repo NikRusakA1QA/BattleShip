@@ -1,6 +1,3 @@
-from selenium.webdriver.remote.webelement import WebElement
-
-
 class Table():
     def __init__(self, table_locator="locator", heigh=10, width=10):
         self.table_locator = table_locator
@@ -10,4 +7,3 @@ class Table():
         with open("field_visible") as f:
             for line in f.readlines():
                 elements = line.split(" ")
-                

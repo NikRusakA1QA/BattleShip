@@ -111,3 +111,9 @@ class Rectangle1x2(Figure):
     def __init__(self):
         super().__init__(1, 2, self.grid)
 
+class Rectangle1x1(Figure):
+    grid = [[1]]
+
+    def __init__(self):
+        super().__init__(1, 1, self.grid)
+
