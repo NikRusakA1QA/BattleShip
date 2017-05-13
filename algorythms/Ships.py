@@ -1,10 +1,12 @@
 from enum import Enum
 
+
 class ShipTypes(Enum):
     SIZE_4 = "4"
     SIZE_3 = "3"
     SIZE_2 = "2"
     SIZE_1 = "1"
+
 
 class Ships():
     def __init__(self):
