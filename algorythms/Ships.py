@@ -9,18 +9,20 @@ class ShipTypes(Enum):
 
 
 class Ships():
-    def __init__(self):
-        self.ships = [ShipTypes.SIZE_4,
+    ships = [ShipTypes.SIZE_4,
                       ShipTypes.SIZE_3, ShipTypes.SIZE_3,
                       ShipTypes.SIZE_2, ShipTypes.SIZE_2, ShipTypes.SIZE_2,
                       ShipTypes.SIZE_1, ShipTypes.SIZE_1, ShipTypes.SIZE_1, ShipTypes.SIZE_1]
 
-    def check(self):
-        return self.ships is []
+    @staticmethod
+    def check():
+        return Ships.ships is []
 
-    def check_size(self, ship_type):
-        return ship_type in self.ships
+    @staticmethod
+    def check_size(ship_type):
+        return ship_type in Ships.ships
 
-    def destroy(self, ship_type):
-        self.ships.remove(ship_type)
-        return self.check()
+    @staticmethod
+    def destroy(ship_type):
+        Ships.ships.remove(ship_type)
+        return Ships.check()

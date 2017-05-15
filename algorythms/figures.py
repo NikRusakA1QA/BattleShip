@@ -76,6 +76,21 @@ class Rectangle2x4(Figure):
     def __init__(self):
         super().__init__(2, 4, self.grid)
 
+class Rectangle1x4(Figure):
+    grid = [[1, 0, 0, 0]]
+
+    def __init__(self):
+        super().__init__(1, 4, self.grid)
+
+class Rectangle4x1(Figure):
+    grid = [[1],
+            [0],
+            [0],
+            [0]]
+
+    def __init__(self):
+        super().__init__(4, 1, self.grid)
+
 
 class Square3x3(Figure):
     grid = [[1, 0, 0],
