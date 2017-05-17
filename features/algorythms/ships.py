@@ -7,6 +7,16 @@ class ShipTypes(Enum):
     SIZE_2 = "2"
     SIZE_1 = "1"
 
+    @staticmethod
+    def get_type_by_size(val):
+        return SHIPS_DICTIONARY[val]
+
+SHIPS_DICTIONARY = {
+    1:ShipTypes.SIZE_1,
+    2:ShipTypes.SIZE_2,
+    3:ShipTypes.SIZE_3,
+    4:ShipTypes.SIZE_4
+}
 
 class Ships():
     ships = [ShipTypes.SIZE_4,

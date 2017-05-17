@@ -1,21 +1,21 @@
-from algorythms.TableElement import TableElement
+from features.algorythms.table_element import TableElement
 
 
 class Matrix():
-    def __init__(self, x=10, y=10):
+    def __init__(self, table_locator, status_addition, x=10, y=10):
         self.height = x
         self.width = y
+        self.table_locator = table_locator
+        self.status_addition = status_addition
         self.content = []
-        for j in range(x):
-            row = []
-            for i in range(y):
-                row.append(TableElement())
-            self.content.append(row)
+        self.update()
 
-    def update(self, array):
-        for row_source, row_target in zip(array, self.content):
-            for element_source, element_target in zip(row_source, row_target):
-                element_target.set_status(element_source.replace("\n",""))
+    def update(self):
+        for j in range(self.height):
+            row = []
+            for i in range(self.width):
+                row.append(TableElement(self.table_locator, self.status_addition, j, i))
+            self.content.append(row)
 
     def get_content_statuses_as_array(self):
         array = []
@@ -29,7 +29,8 @@ class Matrix():
     def find_figure(self, figure):
         for x in range(self.height):
             for y in range(self.width):
-                figure.fill(self.content, x, y)
+                success = figure.fill(self.content, x, y)
+                if success: self.update()
 
 
 
