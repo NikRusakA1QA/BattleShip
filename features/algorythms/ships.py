@@ -34,5 +34,6 @@ class Ships():
 
     @staticmethod
     def destroy(ship_type):
-        Ships.ships.remove(ship_type)
+        if Ships.check_size(ship_type):
+            Ships.ships.remove(ship_type)
         return Ships.check()

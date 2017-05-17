@@ -82,8 +82,8 @@ class TableElement():
             target.append((0, val))
 
     def get_neighbor(self, direction):
-        if (0 <= self.x + direction[0] < Config.width
-            and 0 <= self.y + direction[1] < Config.heigh):
+        if (0 <= self.x + direction[0] < Config.get_config().width
+            and 0 <= self.y + direction[1] < Config.get_config().heigh):
             return TableElement(self.table_locator, self.status_addition, self.x + direction[0], self.y + direction[1])
 
 

@@ -30,7 +30,7 @@ def click_start(context):
 @given('I wait for opponent')
 def wait_for_opponent(context):
     BattleShipDriver.wait_for_opponent()
-    context.battle_table = Table(Config.table_locator, Config.status_addition)
+    context.battle_table = Table(Config.get_config().table_locator, Config.get_config().status_addition)
 
 
 @then('I use algorythm')
@@ -49,4 +49,4 @@ def fill_all_possible_figures(context):
 
 @then('I should win')
 def check_if_win(context):
-    assert context.str == Config.win_game_string, context.str
+    assert context.str == Config.get_config().win_game_string, context.str
