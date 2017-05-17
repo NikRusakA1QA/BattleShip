@@ -66,13 +66,18 @@ class BattleShipDriver:
                 WebDriverWait(BattleShipDriver.get_driver(), Config.get_config().timeout).until(BattleShipDriver.wait_for_element_status(Config.get_config().opponent_field_locator, Config.get_config().wait_status))
                 return
             except:
-                notification_element = BattleShipDriver.get_driver().find_element_by_xpath(Config.get_config().notification_method_locator)
-                text = notification_element.text
-                if not text in (Config.get_config().your_turn_message,Config.get_config().wait_your_turn_message):
-                    if text == Config.get_config().win_game_string:
-                        raise GameWin(text)
-                    else:
-                        raise UnexpectedGameFinish(text)
+                BattleShipDriver.check_message()
+
+    @staticmethod
+    def check_message():
+        notification_element = BattleShipDriver.get_driver().find_element_by_xpath(
+            Config.get_config().notification_method_locator)
+        text = notification_element.text
+        if not text in (Config.get_config().your_turn_message, Config.get_config().wait_your_turn_message):
+            if text == Config.get_config().win_game_string:
+                raise GameWin(text)
+            else:
+                raise UnexpectedGameFinish(text)
 
     @staticmethod
     def get_message_from_notification():
@@ -81,7 +86,10 @@ class BattleShipDriver:
 
     @staticmethod
     def wait_for_status_update(status_locator, null_status):
-        WebDriverWait(BattleShipDriver.get_driver(), Config.get_config().timeout).until(BattleShipDriver.wait_for_element_status(status_locator, null_status))
+        try:
+            WebDriverWait(BattleShipDriver.get_driver(), Config.get_config().timeout).until(BattleShipDriver.wait_for_element_status(status_locator, null_status))
+        except:
+            BattleShipDriver.check_message()
 
     @staticmethod
     def click_table_element(locator):

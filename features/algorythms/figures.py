@@ -12,9 +12,9 @@ class Figure():
         self.target_ship = target_ship
 
     def get_figure(self, array, pointX, pointY):
+        if self.width == 1 and self.heigh == 1:
+            return [[array[pointX][pointY]]]
         if 0<=pointX + self.width <= Config.get_config().width and 0<=pointY + self.heigh <= Config.get_config().heigh:
-            if self.width==1 and self.heigh ==1:
-                return [[array[pointX][pointY]]]
             return self._get_dd_array_part(array, (pointX, pointX + self.width), (pointY, pointY + self.heigh))
 
     def _get_dd_array_part(self, array, rows, columns):
